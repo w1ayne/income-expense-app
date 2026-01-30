@@ -1,3 +1,4 @@
+
 // ดึง Element ต่างๆ จาก DOM
 const balance = document.getElementById('balance');
 const money_plus = document.getElementById('money-plus');
@@ -7,8 +8,10 @@ const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
+
 // สร้างตัวแปรเก็บข้อมูลธุรกรรม (ในที่นี้เริ่มจากอาเรย์ว่าง)
-let transactions = [];
+let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 // ฟังก์ชันเพิ่มธุรกรรมลงใน List
 function addTransaction(e) {
@@ -71,6 +74,9 @@ function updateValues() {
     balance.innerText = `฿${total}`;
     money_plus.innerText = `฿${income}`;
     money_minus.innerText = `฿${expense}`;
+}
+function updateLocalStorage() {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
 // ลบธุรกรรม
