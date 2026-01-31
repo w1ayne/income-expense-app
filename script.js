@@ -12,8 +12,7 @@ const amount = document.getElementById('amount');
  * - ใช้ JSON.parse เพื่อแปลง String กลับมาเป็น Array
  * - ถ้าในเครื่องไม่มีข้อมูลเลย (null) ให้เริ่มที่อาเรย์ว่าง [ ]
  */
-const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
-let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
+let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
 // ฟังก์ชันเพิ่มธุรกรรมลงใน List
 function addTransaction(e) {
